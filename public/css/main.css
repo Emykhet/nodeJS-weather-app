@@ -1,0 +1,29 @@
+h1 {
+    color: brown;
+}
+
+input {
+    padding: .5rem 1rem;
+    border: 1px solid #ccc;
+    outline: none;
+
+}
+
+input:focus {
+    border: 1px solid dodgerblue;
+}
+
+button {
+    cursor: pointer;
+    opacity: 1;
+    padding: .5rem 1rem;
+    border: 1px solid dodgerblue;
+    background: dodgerblue;
+    color: #fff;
+    outline: none;
+    transition: opacity .2s ease-in-out;
+}
+
+button:hover {
+    opacity: .85;
+}
