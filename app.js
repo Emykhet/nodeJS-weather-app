@@ -10,39 +10,37 @@ const app = express();
 
 //specify paths for public and hsb extension
 const publicDirPath = path.join(__dirname, "/public");
-const viewsPath = path.join(__dirname, "/templates", 'views');
-const partialsPath = path.join(__dirname, '/templates/partials');
+const viewsPath = path.join(__dirname, "/templates", "views");
+const partialsPath = path.join(__dirname, "/templates/partials");
 //specify view engine and provide hsb  extension
-app.set('view engine', 'hbs');
-app.set('views', viewsPath);
+app.set("view engine", "hbs");
+app.set("views", viewsPath);
 hbs.registerPartials(partialsPath);
 
 // Serve up html, css files from public folder
 app.use(express.static(publicDirPath));
 
-// rendering dynamic data instead of sending 
-app.get('', (req, res) => {
-  res.render('index', {
-    title: 'Weather App',
-    name: 'Created by Emykhet Akhu'
+// rendering dynamic data instead of sending
+app.get("", (req, res) => {
+  res.render("index", {
+    title: "Weather App",
+    name: "Created by Emykhet Akhu"
   });
 });
 
-
-app.get('/contact', (req, res) => {
-  res.render('contact', {
-    title: 'Contact Me',
-    name: 'Created by Emykhet Akhu'
+app.get("/contact", (req, res) => {
+  res.render("contact", {
+    title: "Contact Me",
+    name: "Created by Emykhet Akhu"
   });
 });
-
 
 // Send to APIendpoint
-app.get('/weather', (req, res) => {
+app.get("/weather", (req, res) => {
   const location = req.query.address;
   if (!location) {
     return res.send({
-      error: 'Unable to find weather from given location..'
+      error: "Unable to find weather from given location.."
     });
   } else {
     // Callback chaining
@@ -65,15 +63,13 @@ app.get('/weather', (req, res) => {
   }
 });
 
-
 // Port
 
-const port = process.env.port || 3000;
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
   console.log(`Server listening at port ${port}.`);
 });
-
 
 /****************************/
 
@@ -95,7 +91,6 @@ app.get('*', (req, res) => {
 */
 
 //***************************/
-
 
 /*
 
